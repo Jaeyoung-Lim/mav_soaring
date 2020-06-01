@@ -1,0 +1,11 @@
+<launch>
+    <node name="hilbert_mapper" pkg="hilbert_mapper" type="hilbert_mapper" output="screen">
+    </node>
+    <remap from="/mappublisher/pose" to="/hilbert_mapper/map_center/posestamped"/>
+    <remap from="/mappublisher/pointcloud" to="/hilbert_mapper/tsdf_pointcloud"/>
+
+    <node name="hilbert_mappublisher" pkg="hilbert_mappublisher" type="hilbert_mappublisher" output="screen">
+        <param name="width" type="int" value="1" />
+        <param name="resolution" type="double" value="0.1" />
+    </node>
+</launch>
